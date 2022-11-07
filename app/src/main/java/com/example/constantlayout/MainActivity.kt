@@ -11,12 +11,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnApply.setOnClickListener{
-            val firstName = etFirstName.text.toString();
-            val lastName  = etLastName.text.toString();
-            val country = etCountry.text.toString();
-            val dob = etDoB.text.toString();
-            Log.d("MainActivity", "$firstName, $lastName, form Country: $country, Birth On: $dob applied for visa")
+        btnAdd.setOnClickListener {
+           val firstNumber =  firstNumber.text.toString().toInt();
+           val secondNumber =  etSecondNumber.text.toString().toInt();
+
+            val result = firstNumber + secondNumber;
+            tvResult.text = result.toString()
         }
+
     }
 }
