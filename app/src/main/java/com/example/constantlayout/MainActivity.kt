@@ -3,7 +3,9 @@ package com.example.constantlayout
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.custom_toast.*
 import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
@@ -11,13 +13,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnAdd.setOnClickListener {
-           val firstNumber =  firstNumber.text.toString().toInt();
-           val secondNumber =  etSecondNumber.text.toString().toInt();
-
-            val result = firstNumber + secondNumber;
-            tvResult.text = result.toString()
+        ctButton.setOnClickListener {
+            Toast(this).apply {
+                duration = Toast.LENGTH_LONG
+                view = layoutInflater.inflate(R.layout.custom_toast, clToast)
+                show()
+            }
         }
+
 
     }
 }
