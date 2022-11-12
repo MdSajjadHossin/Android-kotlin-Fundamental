@@ -1,5 +1,6 @@
 package com.example.constantlayout
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,11 +14,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        ctButton.setOnClickListener {
-            Toast(this).apply {
-                duration = Toast.LENGTH_LONG
-                view = layoutInflater.inflate(R.layout.custom_toast, clToast)
-                show()
+
+
+        btnEnter.setOnClickListener {
+            val name = etName.text.toString()
+            val age = etAge.text.toString().toInt()
+            val country = etCountry.text.toString()
+            Intent(this, SecondActivity::class.java).also {
+                it.putExtra("EXTRA_NAME", name)
+                it.putExtra("EXTRA_AGE", age)
+                it.putExtra("EXTRA_COUNTRY", country)
+                startActivity(it)
             }
         }
 
